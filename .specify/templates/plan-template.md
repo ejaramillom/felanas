@@ -31,10 +31,13 @@
 
 *GATE: Must pass before Phase 0 research. Re-check after Phase 1 design.*
 
-- **Code Quality**: Does the proposed implementation adhere to the project's coding standards? Is there a plan for documentation?
-- **Testing Standards**: Does the plan include comprehensive unit and integration tests? Is TDD being considered?
-- **User Experience Consistency**: If the feature has a UI component, does it align with the existing design system and style guide?
-- **Performance Requirements**: Have performance implications been considered? Are there plans for performance testing if necessary?
+- **Architectural Integrity**: Does the design follow DDD? Are business logic, data, and presentation properly separated? Is sharding handled correctly?
+- **Code Quality**: Does the proposal adhere to style guides and idiomatic patterns (e.g., Service Objects)?
+- **Testing Standards**: Does the plan include comprehensive Unit, Integration, and System tests? Is TDD considered?
+- **Security & Compliance**: Are secrets handled securely? Is input validation and authN/authZ accounted for?
+- **Performance & Scalability**: Are N+1 queries prevented? Are caching and background jobs used where appropriate?
+- **Observability**: Is structured logging and error context planned?
+- **User Experience Consistency**: Does the UI component align with the design system?
 
 ## Project Structure
 
