@@ -5,6 +5,15 @@
 **Status**: Draft
 **Input**: User description: "In spec.md it was defined that the key entities are: employee, paycheckconfig, attendancelog, workday, schedule. it is necessary that a company entity is added as a singleton, and limit the visibility of things, pages, databases, data and all other related items to each of the mentioned entities. refine the specification and fix this."
 
+## Clarifications
+
+### Session 2025-12-30
+- Q: How should system users be modeled relative to Employees? → A: Separated (User + Employee) - Distinct User entity handles auth and links to Company. `Employee` is purely for HR/Payroll data.
+- Q: How are new Companies and their initial Admin Users created? → A: SuperAdmin Provisioning - Internal Admin creates Company & Admin User manually (CLI/API/Admin UI).
+- Q: What happens when a Company is deleted? → A: Strict Hard Delete (Cascade) - Deleting a Company permanently deletes ALL linked data (Users, Employees, Logs).
+- Q: How is the active Company context resolved for API/System requests? → A: JWT/Header Claims - CompanyID is embedded in the User's authentication token (JWT) or a custom Header.
+- Q: How are currencies handled across different companies? → A: Single Currency per Company - Each `Company` defines its primary currency (e.g., Company A uses USD, Company B uses EUR).
+
 ## User Scenarios & Testing
 
 ### User Story 1 - Data Isolation by Company (Priority: P1)
@@ -51,11 +60,15 @@ As a System Administrator, I want the system to recognize a "Company" as the roo
 - **FR-004**: System MUST ensure that `PaycheckConfig` is a singleton *per Company* (each company has one configuration).
 - **FR-005**: System MUST prevent creation of orphaned data (e.g., an Attendance Log not linked to a valid Company/Employee of that Company).
 - **FR-006**: System MUST treat the `Company` as a singleton context for the current user session (effectively "Current Company").
+- **FR-007**: System MUST support a `User` entity distinct from `Employee`, responsible for authentication and linked to a specific `Company`.
+- **FR-008**: System MUST allow a "SuperAdmin" (internal role) to provision new `Company` and initial Admin `User` entities (via API/CLI/Admin UI).
+- **FR-009**: System MUST permanently delete all associated data (Users, Employees, Logs, etc.) if a `Company` is deleted (Cascade Delete).
 
 ### Key Entities
 
 - **Company**: ID, Name, CreatedAt. (Parent Entity)
-- **Employee**: Linked to Company.
+- **User**: ID, Username, PasswordHash, Role, Linked to Company. (Auth Entity)
+- **Employee**: Linked to Company. (HR Entity)
 - **PaycheckConfig**: Linked to Company.
 - **AttendanceLog**: Linked to Company (transitive via Employee or direct).
 - **WorkDay**: Linked to Company (transitive via Employee or direct).
