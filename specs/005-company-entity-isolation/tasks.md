@@ -17,10 +17,10 @@
 
 **Purpose**: Project initialization and basic structure
 
-- [ ] T001 Initialize TypeScript project structure in src/
-- [ ] T002 [P] Install dependencies (express, typeorm, pg, jsonwebtoken)
-- [ ] T003 [P] Configure TypeORM in src/config/database.ts
-- [ ] T004 [P] Setup Docker Compose for PostgreSQL in docker-compose.yml
+- [x] T001 Initialize TypeScript project structure in src/
+- [x] T002 [P] Install dependencies (express, typeorm, pg, jsonwebtoken)
+- [x] T003 [P] Configure TypeORM in src/config/database.ts
+- [x] T004 [P] Setup Docker Compose for PostgreSQL in docker-compose.yml
 
 ---
 
@@ -29,12 +29,12 @@
 **Purpose**: Core infrastructure that MUST be complete before ANY user story can be implemented. 
 *Note: Includes Company/User entities as they are strict dependencies for all other models.*
 
-- [ ] T005 Create Company entity definition in src/entities/Company.ts
-- [ ] T006 Create User entity definition (with company_id) in src/entities/User.ts
-- [ ] T007 Implement Context interface in src/types/Context.ts
-- [ ] T008 Implement Auth Middleware (JWT extraction to Context) in src/middleware/auth.ts
-- [ ] T009 [P] Create BaseRepository (or Scoped Repository helper) enforcing company_id filter in src/repositories/BaseRepository.ts
-- [ ] T010 Setup initial migration for Company and User tables in src/migrations/001_initial_schema.ts
+- [x] T005 Create Company entity definition in src/entities/Company.ts
+- [x] T006 Create User entity definition (with company_id) in src/entities/User.ts
+- [x] T007 Implement Context interface in src/types/Context.ts
+- [x] T008 Implement Auth Middleware (JWT extraction to Context) in src/middleware/auth.ts
+- [x] T009 [P] Create BaseRepository (or Scoped Repository helper) enforcing company_id filter in src/repositories/BaseRepository.ts
+- [x] T010 Setup initial migration for Company and User tables in src/migrations/001_initial_schema.ts
 
 **Checkpoint**: Database has Company/User tables, and app has context awareness.
 
@@ -48,14 +48,14 @@
 
 ### Implementation for User Story 1
 
-- [ ] T011 [P] [US1] Create Employee entity (with company_id) in src/entities/Employee.ts
-- [ ] T012 [P] [US1] Create PaycheckConfig entity (singleton per company) in src/entities/PaycheckConfig.ts
-- [ ] T013 [P] [US1] Create AttendanceLog entity in src/entities/AttendanceLog.ts
-- [ ] T014 [US1] Implement EmployeeRepository (extending BaseRepository) in src/repositories/EmployeeRepository.ts
-- [ ] T015 [US1] Implement PaycheckConfigRepository (enforcing singleton) in src/repositories/PaycheckConfigRepository.ts
-- [ ] T016 [US1] Create EmployeeController (List/Get) in src/controllers/EmployeeController.ts
-- [ ] T017 [US1] Define routes for Employee management in src/routes/employeeRoutes.ts
-- [ ] T018 [US1] Integration Test: Verify cross-company read isolation in tests/integration/isolation.test.ts
+- [x] T011 [P] [US1] Create Employee entity (with company_id) in src/entities/Employee.ts
+- [x] T012 [P] [US1] Create PaycheckConfig entity (singleton per company) in src/entities/PaycheckConfig.ts
+- [x] T013 [P] [US1] Create AttendanceLog entity in src/entities/AttendanceLog.ts
+- [x] T014 [US1] Implement EmployeeRepository (extending BaseRepository) in src/repositories/EmployeeRepository.ts
+- [x] T015 [US1] Implement PaycheckConfigRepository (enforcing singleton) in src/repositories/PaycheckConfigRepository.ts
+- [x] T016 [US1] Create EmployeeController (List/Get) in src/controllers/EmployeeController.ts
+- [x] T017 [US1] Define routes for Employee management in src/routes/employeeRoutes.ts
+- [x] T018 [US1] Integration Test: Verify cross-company read isolation in tests/integration/isolation.test.ts
 
 **Checkpoint**: Data isolation is enforced for Employees and Configs.
 
@@ -69,10 +69,10 @@
 
 ### Implementation for User Story 2
 
-- [ ] T019 [P] [US2] Implement SuperAdmin Provisioning Service in src/services/ProvisioningService.ts
-- [ ] T020 [US2] Create CLI script for provisioning Company+Admin in src/scripts/create-company.ts
-- [ ] T021 [US2] Implement validation logic ensuring no orphaned data creation in src/services/ValidationService.ts
-- [ ] T022 [US2] Test: Cascade Delete (Create Company -> Add Data -> Delete -> Verify Empty) in tests/integration/cascade.test.ts
+- [x] T019 [P] [US2] Implement SuperAdmin Provisioning Service in src/services/ProvisioningService.ts
+- [x] T020 [US2] Create CLI script for provisioning Company+Admin in src/scripts/create-company.ts
+- [x] T021 [US2] Implement validation logic ensuring no orphaned data creation in src/services/ValidationService.ts
+- [x] T022 [US2] Test: Cascade Delete (Create Company -> Add Data -> Delete -> Verify Empty) in tests/integration/cascade.test.ts
 
 **Checkpoint**: Companies can be strictly managed and provisioned.
 
@@ -82,9 +82,9 @@
 
 **Purpose**: Improvements that affect multiple user stories
 
-- [ ] T023 [P] Add concurrency tests for PaycheckConfig singleton in tests/concurrency/singleton.test.ts
-- [ ] T024 [P] Update API documentation (OpenAPI/Swagger) in docs/api.yaml
-- [ ] T025 Security Audit: Verify no IDOR vulnerabilities in Controller layer
+- [x] T023 [P] Add concurrency tests for PaycheckConfig singleton in tests/concurrency/singleton.test.ts
+- [x] T024 [P] Update API documentation (OpenAPI/Swagger) in docs/api.yaml
+- [x] T025 Security Audit: Verify no IDOR vulnerabilities in Controller layer
 
 ---
 
