@@ -1,5 +1,5 @@
-import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, OneToMany } from "typeorm";
-import { User } from "./User";
+import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, OneToMany, Relation } from "typeorm";
+import { User } from "./User.js";
 
 @Entity()
 export class Company {
@@ -16,5 +16,5 @@ export class Company {
     createdAt!: Date;
 
     @OneToMany(() => User, (user) => user.company)
-    users!: User[];
+    users!: Relation<User[]>;
 }

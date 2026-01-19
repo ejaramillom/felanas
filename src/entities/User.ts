@@ -1,5 +1,5 @@
-import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn, Unique } from "typeorm";
-import { Company } from "./Company";
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn, Unique, Relation } from "typeorm";
+import { Company } from "./Company.js";
 
 export enum UserRole {
     ADMIN = "ADMIN",
@@ -31,5 +31,5 @@ export class User {
 
     @ManyToOne(() => Company, (company) => company.users, { onDelete: "CASCADE" })
     @JoinColumn({ name: "company_id" })
-    company!: Company;
+    company!: Relation<Company>;
 }

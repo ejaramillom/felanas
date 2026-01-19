@@ -1,7 +1,8 @@
-import { ScopedRepository } from "./BaseRepository";
-import { Employee } from "../entities/Employee";
+import { BaseRepository } from "./BaseRepository.js";
+import { Employee } from "../entities/Employee.js";
+import { CurrentContext } from "../types/Context.js";
 
-export class EmployeeRepository extends ScopedRepository<Employee> {
+export class EmployeeRepository extends BaseRepository<Employee> {
     constructor(context: any) {
         super(Employee, context);
     }

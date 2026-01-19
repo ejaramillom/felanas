@@ -1,8 +1,8 @@
-import { Repository, ObjectLiteral, FindManyOptions, FindOneOptions, DeepPartial, SaveOptions, FindOptionsWhere } from "typeorm";
-import { AppDataSource } from "../config/database";
-import { CurrentContext } from "../types/Context";
+import { Repository, EntityTarget, ObjectLiteral, FindOneOptions, DeepPartial, FindOptionsWhere, FindManyOptions, SaveOptions } from "typeorm";
+import { AppDataSource } from "../config/database.js";
+import { CurrentContext } from "../types/Context.js";
 
-export class ScopedRepository<T extends ObjectLiteral> {
+export class BaseRepository<T extends ObjectLiteral> {
     private repository: Repository<T>;
     private companyId: string;
 

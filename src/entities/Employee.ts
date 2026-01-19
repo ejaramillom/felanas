@@ -1,21 +1,28 @@
-import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn } from "typeorm";
-import { Company } from "./Company";
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn, OneToOne, Relation } from "typeorm";
+import { Company } from "./Company.js";
+import { PaycheckConfig } from "./PaycheckConfig.js";
 
 @Entity()
 export class Employee {
     @PrimaryGeneratedColumn("uuid")
     id!: string;
 
-    @Column({ name: "full_name" })
-    fullName!: string;
+    @Column({ name: "first_name" })
+    firstName!: string;
+
+    @Column({ name: "last_name" })
+    lastName!: string;
 
     @Column()
-    status!: string;
+    email!: string;
 
     @Column({ name: "company_id" })
     companyId!: string;
 
-    @ManyToOne(() => Company, { onDelete: "CASCADE" })
+    @ManyToOne(() => Company)
     @JoinColumn({ name: "company_id" })
-    company!: Company;
+    company!: Relation<Company>;
+
+    @OneToOne(() => PaycheckConfig, (config) => config.employee)
+    paycheckConfig!: Relation<PaycheckConfig>;
 }

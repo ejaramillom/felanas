@@ -1,5 +1,5 @@
-import { AppDataSource } from "../config/database";
-import { ProvisioningService } from "../services/ProvisioningService";
+import { AppDataSource } from "../config/database.js";
+import { ProvisioningService } from "../services/ProvisioningService.js";
 
 async function main() {
     const args = process.argv.slice(2);
@@ -9,6 +9,11 @@ async function main() {
     }
 
     const [name, currency, username, password] = args;
+
+    if (!name || !currency || !username || !password) {
+         console.error("Missing arguments");
+         process.exit(1);
+    }
 
     try {
         await AppDataSource.initialize();

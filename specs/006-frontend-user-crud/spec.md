@@ -5,6 +5,15 @@
 **Status**: Draft  
 **Input**: User description: "rebuild the entire codebase to make use of ecmascript standards. after that, start creating the frontend to be connected to the current API that was developed. we need user management, paycheck configuration, employee management. on this iteration lets create the frontend and the CRUD operations for users. move everything to containers, in such a way that we can initialize the database, the frontend and the backend servers in containers, eliminate root permissions in docker files and docker compose, and remove all secrets to connect to databases and security systems like authentication from codebase, and manage the secrets from environment variables. generate the corresponding tests, unit and integration tests. name the spec starting with 006."
 
+## Clarifications
+
+### Session 2026-01-19
+- Q: Which frontend framework should be used for the implementation? → A: React
+- Q: Who is authorized to perform user management operations? → A: Admin only
+- Q: Which UI component library should be used for the frontend? → A: Material UI (MUI)
+- Q: Which testing frameworks should be used? → A: Jest + RTL + Supertest (Unit/Integration) AND Playwright (E2E)
+- Q: How should environment variables be initialized/managed for developers? → A: Hybrid approach (gitignored `.env` files + initialization shell scripts in `scripts/` directory)
+
 ## User Scenarios & Testing *(mandatory)*
 
 ### User Story 1 - Secure Containerized Infrastructure (Priority: P1)
@@ -29,21 +38,24 @@ As a DevOps Engineer, I want to deploy the application stack (Backend, Frontend,
 
 ### User Story 2 - User Management Interface (Priority: P1)
 
-As an Administrator, I want to view, create, update, and delete system users via a web frontend, so that I can manage access without direct database interaction.
+As an Admin, I want to view, create, update, and delete system users via a web frontend, so that I can manage access without direct database interaction.
 
 **Why this priority**: Core functionality for this iteration ("CRUD operations for users").
 
 **Independent Test**:
 1. Launch the frontend connected to the backend.
-2. Navigate to the User Management section.
-3. Perform Create, Read (List), Update, and Delete actions on a test user.
+2. Log in as an Admin user.
+3. Navigate to the User Management section.
+4. Perform Create, Read (List), Update, and Delete actions on a test user.
+5. Verify that non-Admin users cannot access these features.
 
 **Acceptance Scenarios**:
 
-1. **Given** I am on the User List page, **When** the page loads, **Then** I see a list of users retrieved from the API.
-2. **Given** I am on the Create User page, **When** I submit valid details, **Then** a new user is created and appears in the list.
-3. **Given** an existing user, **When** I edit their role or details and save, **Then** the updates are reflected in the system.
-4. **Given** a user in the list, **When** I click delete and confirm, **Then** the user is removed.
+1. **Given** I am logged in as an Admin on the User List page, **When** the page loads, **Then** I see a list of users retrieved from the API.
+2. **Given** I am logged in as an Admin, **When** I submit valid details for a new user, **Then** the user is created and appears in the list.
+3. **Given** I am logged in as an Admin, **When** I edit a user's role or details and save, **Then** the updates are reflected in the system.
+4. **Given** I am logged in as an Admin, **When** I click delete and confirm, **Then** the user is removed.
+5. **Given** I am logged in as a Manager or Viewer, **When** I attempt to access the User Management page, **Then** I am denied access.
 
 ---
 
@@ -79,12 +91,15 @@ As a Developer, I want the codebase to use standard ECMAScript Modules (ESM), so
 - **FR-002**: All Docker containers MUST run processes as a non-root user.
 - **FR-003**: All sensitive configuration (DB credentials, API secrets) MUST be injected via environment variables; no secrets in code.
 - **FR-004**: The Backend codebase MUST be refactored/rebuilt to use ECMAScript Modules (ESM).
-- **FR-005**: The system MUST provide a Frontend application that connects to the Backend API.
+- **FR-005**: The system MUST provide a React-based Frontend application that connects to the Backend API.
 - **FR-006**: The Frontend MUST allow creating a new user with fields: Username, Password, Role.
 - **FR-007**: The Frontend MUST allow viewing a list of existing users.
 - **FR-008**: The Frontend MUST allow updating user details.
 - **FR-009**: The Frontend MUST allow deleting a user.
-- **FR-010**: The system MUST include Unit Tests for business logic and Integration Tests for API endpoints.
+- **FR-010**: The system MUST include Unit and Integration tests using Jest, React Testing Library, and Supertest.
+- **FR-011**: The system MUST include End-to-End (E2E) tests using Playwright.
+- **FR-012**: The project MUST provide shell scripts in a `scripts/` directory to help developers initialize local `.env` files from examples.
+- **FR-013**: The application MUST support reading configuration from `.env` files during local development, while ensuring `.env` files are excluded from version control.
 
 ### Key Entities *(include if feature involves data)*
 

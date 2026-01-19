@@ -1,8 +1,9 @@
-import { ScopedRepository } from "./BaseRepository";
-import { PaycheckConfig } from "../entities/PaycheckConfig";
+import { BaseRepository } from "./BaseRepository.js";
+import { PaycheckConfig } from "../entities/PaycheckConfig.js";
+import { CurrentContext } from "../types/Context.js";
 import { DeepPartial } from "typeorm";
 
-export class PaycheckConfigRepository extends ScopedRepository<PaycheckConfig> {
+export class PaycheckConfigRepository extends BaseRepository<PaycheckConfig> {
     constructor(context: any) {
         super(PaycheckConfig, context);
     }

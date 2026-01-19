@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { EmployeeRepository } from "../repositories/EmployeeRepository";
+import { EmployeeRepository } from "../repositories/EmployeeRepository.js";
 
 export class EmployeeController {
     static async list(req: Request, res: Response) {

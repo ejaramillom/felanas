@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from "express";
 import jwt from "jsonwebtoken";
-import { CurrentContext } from "../types/Context";
+import { CurrentContext } from "../types/Context.js";
 
 const JWT_SECRET = process.env.JWT_SECRET || "default_secret_do_not_use_in_production";
 

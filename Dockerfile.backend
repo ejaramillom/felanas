@@ -1,0 +1,50 @@
+# Stage 1: Build Stage
+FROM node:20-alpine AS builder
+
+WORKDIR /app
+
+# Copy package files - cache bust 1
+COPY package*.json ./
+COPY tsconfig.json ./
+
+# Install dependencies
+RUN npm ci
+
+# Copy source code
+COPY src ./src
+
+# Build the application
+RUN npm run build
+
+# Stage 2: Production Stage
+FROM node:20-alpine AS runner
+
+WORKDIR /app
+
+# Create a non-root user
+RUN addgroup -S nodejs && adduser -S nodejs -G nodejs
+
+# Copy built artifacts and dependencies
+COPY --from=builder /app/dist ./dist
+COPY --from=builder /app/node_modules ./node_modules
+COPY --from=builder /app/package*.json ./
+
+# Debug: Print package.json
+RUN cat package.json
+
+# Set environment variables
+ENV NODE_ENV=production
+ENV PORT=3000
+
+# Switch to non-root user
+USER nodejs
+
+# Force cache bust for runner stage package.json copy - v2
+# Copy built artifacts and dependencies
+COPY --from=builder /app/dist ./dist
+
+# Expose port
+EXPOSE 3000
+
+# Start command
+CMD ["node", "dist/index.js"]

@@ -1,6 +1,7 @@
-import { AppDataSource } from "../config/database";
-import { Company } from "../entities/Company";
-import { User, UserRole } from "../entities/User";
+import { AppDataSource } from "../config/database.js";
+import { Company } from "../entities/Company.js";
+import { User, UserRole } from "../entities/User.js";
+import crypto from "crypto";
 // import bcrypt from "bcrypt"; // Assuming bcrypt would be used for hashing
 
 export class ProvisioningService {
