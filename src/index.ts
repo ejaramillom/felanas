@@ -4,22 +4,27 @@ import { AppDataSource } from "./config/database";
 import employeeRoutes from "./routes/employeeRoutes";
 
 const app = express();
-app.use(express.json());
-
-app.use("/employees", employeeRoutes);
-
 const PORT = process.env.PORT || 3000;
+
+app.use(express.json());
+app.get("/", (req, res) => {
+    res.json({ message: "[Index]Felanas API is running" });
+});
+app.use("/employees", employeeRoutes)
 
 // Initialize DB and start server only if this file is run directly
 if (require.main === module) {
-    AppDataSource.initialize()
-        .then(() => {
-            console.log("Database initialized");
+    (async () => {
+        try {
+            await AppDataSource.initialize();
+            console.log("[Index] Database initialized");
             app.listen(PORT, () => {
-                console.log(`Server running on port ${PORT}`);
+                console.log(`[Index] Server running on port ${PORT}`);
             });
-        })
-        .catch((error) => console.log(error));
+        } catch (error) {
+            console.log(error);
+        }
+    })();
 }
 
 export default app;
