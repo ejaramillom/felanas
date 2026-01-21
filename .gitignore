@@ -1,126 +1,21 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
-
-# dependencies
-/node_modules
-/.pnp
-.pnp.js
-
-# testing
-/coverage
-
-# production
-/build
-
-# misc
-.DS_Store
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
-
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-
-# gemini
-.gemini
-/.gemini
-
-# specify
-# Python
-__pycache__/
-*.py[cod]
-*$py.class
-*.so
-.Python
-build/
-develop-eggs/
+# Node.js
+node_modules/
 dist/
-downloads/
-eggs/
-.eggs/
-lib/
-lib64/
-parts/
-sdist/
-var/
-wheels/
-*.egg-info/
-.installed.cfg
-*.egg
-
-# Virtual environments
-venv/
-ENV/
-env/
-.venv
-
-# IDE
-.vscode/
-.idea/
-*.swp
-*.swo
-*.tmp
-
-# Project specific
+build/
+coverage/
 *.log
 .env
-*.lock
+.env.*
+!.env.example
 
-# Spec Kit-specific files
-.genreleases/
-*.zip
-sdd-*/
+# OS
+.DS_Store
+Thumbs.db
+.idea/
 
-### RubyMine ###
-# Ignore bundler config.
-/.bundle
-
-# Ignore the default SQLite database.
-/db/*.sqlite3
-/db/*.sqlite3-journal
-
-# Ignore all logfiles and tempfiles.
-/log/*
-!/log/.keep
-/tmp
-*.iml
-
-# User-specific stuff:
- .idea/workspace.xml
- .idea/tasks.xml
- .idea/dictionaries
-
-# Sensitive or high-churn files:
- .idea/dataSources.ids
- .idea/dataSources.xml
- .idea/sqlDataSources.xml
- .idea/dynamic.xml
- .idea/uiDesigner.xml
-
-# Gradle:
- .idea/gradle.xml
- .idea/libraries
-
-# Mongo Explorer plugin:
- .idea/mongoSettings.xml
-
-## File-based project format:
-*.ipr
-*.iws
-
-## Plugin-specific files:
-
-# IntelliJ
-out/
-
-# mpeltonen/sbt-idea plugin
-.idea_modules/
-
-# JIRA plugin
-atlassian-ide-plugin.xml
-
-# Crashlytics plugin (for Android Studio and IntelliJ)
-com_crashlytics_export_strings.xml
-crashlytics.properties
-crashlytics-build.properties
+# Playwright
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
+/playwright/.auth/
