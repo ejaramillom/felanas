@@ -1,6 +1,5 @@
 import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn, OneToOne, Relation } from "typeorm";
 import { Company } from "./Company.js";
-import { PaycheckConfig } from "./PaycheckConfig.js";
 
 @Entity()
 export class Employee {
@@ -19,10 +18,13 @@ export class Employee {
     @Column({ name: "company_id" })
     companyId!: string;
 
-    @ManyToOne(() => Company)
+    @Column({ type: "decimal", precision: 10, scale: 2, name: "base_salary", default: 0 })
+    baseSalary!: number;
+
+    @Column("simple-array", { default: "" })
+    skills!: string[];
+
+    @ManyToOne(() => Company, { onDelete: "CASCADE" })
     @JoinColumn({ name: "company_id" })
     company!: Relation<Company>;
-
-    @OneToOne(() => PaycheckConfig, (config) => config.employee)
-    paycheckConfig!: Relation<PaycheckConfig>;
 }

@@ -1,5 +1,5 @@
 import request from 'supertest';
-import app from '../../src/index.js'; // Ensure .js extension for ESM imports
+import app from '../../src/app.js'; // Ensure .js extension for ESM imports
 import { AppDataSource } from '../../src/config/database.js';
 import { User, UserRole } from '../../src/entities/User.js';
 import { Company } from '../../src/entities/Company.js';

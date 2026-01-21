@@ -20,8 +20,9 @@ describe("Cascade Delete Isolation", () => {
         // 2. Add Employee to Company
         const empRepo = AppDataSource.getRepository(Employee);
         await empRepo.save({
-            fullName: "To Be Deleted",
-            status: "ACTIVE",
+            firstName: "To Be",
+            lastName: "Deleted",
+            email: "deleted@test.com",
             company: company
         });
 

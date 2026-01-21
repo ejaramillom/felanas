@@ -1,5 +1,5 @@
 import request from "supertest";
-import app from "../../src/index";
+import app from "../../src/app.js";
 import { AppDataSource } from "../../src/config/database";
 import jwt from "jsonwebtoken";
 import { ProvisioningService } from "../../src/services/ProvisioningService";
@@ -37,11 +37,11 @@ describe("Cross-Company Isolation", () => {
 
         // Seed an employee for Company B to ensure it's not visible to A
         const repoB = new EmployeeRepository({ companyId: companyBId, userId: adminB.id, userRole: adminB.role });
-        await repoB.save({ fullName: "Employee B", status: "ACTIVE" });
+        await repoB.save({ firstName: "Employee", lastName: "B", email: "b@test.com" });
 
         // Seed an employee for Company A to ensure it's not visible to B
         const repoA = new EmployeeRepository({ companyId: companyAId, userId: adminA.id, userRole: adminA.role });
-        await repoA.save({ fullName: "Employee A", status: "ACTIVE" });
+        await repoA.save({ firstName: "Employee", lastName: "A", email: "a@test.com" });
     });
 
     afterAll(async () => {
@@ -60,7 +60,8 @@ describe("Cross-Company Isolation", () => {
         
         // Should only see Company A's employee
         expect(res.body).toHaveLength(1);
-        expect(res.body[0].fullName).toBe("Employee A");
+        expect(res.body[0].firstName).toBe("Employee");
+        expect(res.body[0].lastName).toBe("A");
         
         // Explicitly verify no employees from Company B are returned
         const employeesFromB = res.body.filter((e: any) => e.companyId === companyBId);
@@ -77,7 +78,8 @@ describe("Cross-Company Isolation", () => {
         
         // Should only see Company B's employee
         expect(res.body).toHaveLength(1);
-        expect(res.body[0].fullName).toBe("Employee B");
+        expect(res.body[0].firstName).toBe("Employee");
+        expect(res.body[0].lastName).toBe("B");
 
         // Explicitly verify no employees from Company A are returned
         const employeesFromA = res.body.filter((e: any) => e.companyId === companyAId);

@@ -78,3 +78,18 @@ erDiagram
 - **New Fields** (if not already present):
   - `sunday_bonus_amount`: Decimal.
   - `sales_commission_pct`: Decimal (Global default).
+
+### 4. SalesLog
+- **Role**: Records manual sales figures for commission calculation.
+- **Isolation**: `company_id`.
+- **Fields**:
+  - `period_start`: Date.
+  - `period_end`: Date.
+  - `amount`: Decimal.
+
+### 5. Holiday
+- **Role**: Defines public holidays for bonus/deduction logic.
+- **Isolation**: `company_id`.
+- **Fields**:
+  - `date`: Date.
+  - `name`: String.

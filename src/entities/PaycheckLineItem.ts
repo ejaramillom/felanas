@@ -1,5 +1,5 @@
-import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn } from "typeorm";
-import { Paycheck } from "./Paycheck";
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn, Relation } from "typeorm";
+import { Paycheck } from "./Paycheck.js";
 
 export enum LineItemType {
     INCOME = "INCOME",
@@ -32,5 +32,5 @@ export class PaycheckLineItem {
 
     @ManyToOne(() => Paycheck, (paycheck) => paycheck.lineItems, { onDelete: "CASCADE" })
     @JoinColumn({ name: "paycheck_id" })
-    paycheck!: Paycheck;
+    paycheck!: Relation<Paycheck>;
 }

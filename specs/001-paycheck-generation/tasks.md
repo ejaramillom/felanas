@@ -21,12 +21,15 @@
 - [x] T002 Create Paycheck entity in src/entities/Paycheck.ts
 - [x] T003 Create PaycheckLineItem entity in src/entities/PaycheckLineItem.ts
 - [x] T004 Create Schedule entity in src/entities/Schedule.ts
-- [ ] T005 [P] Update Employee entity (base_salary, skills) in src/entities/Employee.ts
-- [ ] T006 [P] Update PaycheckConfig entity (sunday_bonus_amount, sales_commission_pct) in src/entities/PaycheckConfig.ts
-- [ ] T007 Create PaycheckRepository in src/repositories/PaycheckRepository.ts
-- [ ] T008 [P] Create ScheduleRepository in src/repositories/ScheduleRepository.ts
-- [ ] T009 Create PaycheckLineItemRepository in src/repositories/PaycheckLineItemRepository.ts
-- [ ] T010 Create migration for new entities and updates in src/migrations/002_paycheck_schema.ts
+- [x] T005 [P] Update Employee entity (base_salary, skills) in src/entities/Employee.ts
+- [x] T006 [P] Update PaycheckConfig entity (sunday_bonus_amount, sales_commission_pct) in src/entities/PaycheckConfig.ts
+- [x] T007 Create PaycheckRepository in src/repositories/PaycheckRepository.ts
+- [x] T008 [P] Create ScheduleRepository in src/repositories/ScheduleRepository.ts
+- [x] T009 Create PaycheckLineItemRepository in src/repositories/PaycheckLineItemRepository.ts
+- [x] T035 [P] Create Holiday entity in src/entities/Holiday.ts
+- [x] T036 [P] Create SalesLog entity in src/entities/SalesLog.ts
+- [x] T037 [P] Create Repositories for Holiday and SalesLog
+- [x] T010 Create migration for new entities and updates in src/migrations/002_paycheck_schema.ts
 
 ---
 
@@ -34,8 +37,8 @@
 
 **Purpose**: Core infrastructure that MUST be complete before ANY user story can be implemented.
 
-- [ ] T011 Implement PdfGenerator service wrapper (PDFKit) in src/services/payroll/PdfGenerator.ts
-- [ ] T012 Create MathUtils helper using decimal.js in src/utils/MathUtils.ts
+- [x] T011 Implement PdfGenerator service wrapper (PDFKit) in src/services/payroll/PdfGenerator.ts
+- [x] T012 Create MathUtils helper using decimal.js in src/utils/MathUtils.ts
 
 **Checkpoint**: Entities exist, database is migrated, and helper services are ready.
 
@@ -49,14 +52,16 @@
 
 ### Implementation for User Story 1
 
-- [ ] T013 [US1] Create PaycheckCalculator Service (Empty Shell) in src/services/payroll/PaycheckCalculator.ts
-- [ ] T014 [US1] Write Unit Tests for PaycheckCalculator (TDD) in tests/unit/services/payroll/PaycheckCalculator.test.ts
-- [ ] T015 [US1] Implement PaycheckCalculator logic (Gross, Deductions, Net) in src/services/payroll/PaycheckCalculator.ts
-- [ ] T016 [US1] Implement PaycheckService (Orchestrator: Get Data -> Calculate -> Save) in src/services/payroll/PaycheckService.ts
-- [ ] T017 [US1] Integrate PdfGenerator into PaycheckService in src/services/payroll/PaycheckService.ts
-- [ ] T018 [US1] Create PaycheckController (Generate, List, Download) in src/controllers/PaycheckController.ts
-- [ ] T019 [US1] Define routes for Paycheck management in src/routes/paycheckRoutes.ts
-- [ ] T020 [US1] Integration Test: Generate Paycheck API flow in tests/integration/paycheck_generation.test.ts
+- [x] T013 [US1] Create PaycheckCalculator Service (Empty Shell) in src/services/payroll/PaycheckCalculator.ts
+- [x] T014 [US1] Write Unit Tests for PaycheckCalculator (TDD) in tests/unit/services/payroll/PaycheckCalculator.test.ts
+- [x] T015 [US1] Implement PaycheckCalculator logic (Gross, Deductions, Net) in src/services/payroll/PaycheckCalculator.ts
+- [x] T016 [US1] Implement PaycheckService (Orchestrator: Get Data -> Calculate -> Save) in src/services/payroll/PaycheckService.ts
+- [x] T017 [US1] Integrate PdfGenerator into PaycheckService in src/services/payroll/PaycheckService.ts
+- [x] T018 [US1] Create PaycheckController (Generate, List, Download) in src/controllers/PaycheckController.ts
+- [x] T019 [US1] Define routes for Paycheck management in src/routes/paycheckRoutes.ts
+- [x] T038 [US1] Create SalesLogController (Manual Input API) in src/controllers/SalesLogController.ts
+- [x] T039 [US1] Define routes for SalesLog in src/routes/salesRoutes.ts
+- [x] T020 [US1] Integration Test: Generate Paycheck API flow in tests/integration/paycheck_generation.test.ts
 
 **Checkpoint**: API can generate and return valid Paychecks and PDFs.
 
@@ -92,6 +97,8 @@
 - [ ] T027 [US3] Update PaycheckCalculator to use AttendanceLog data in src/services/payroll/PaycheckCalculator.ts
 - [ ] T028 [US3] Create AttendanceService (Ingest, Validate Day) in src/services/attendance/AttendanceService.ts
 - [ ] T029 [US3] Setup node-cron job for periodic aggregation/checks in src/jobs/AttendanceAggregator.ts
+- [ ] T040 [US3] Create AttendanceController (Upload Endpoint) in src/controllers/AttendanceController.ts
+- [ ] T041 [US3] Define routes for Attendance upload in src/routes/attendanceRoutes.ts
 - [ ] T030 [US3] Integration Test: Attendance impact on Paycheck in tests/integration/attendance_paycheck.test.ts
 
 **Checkpoint**: Attendance logs correctly affect paycheck calculations (deductions).

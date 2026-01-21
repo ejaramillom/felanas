@@ -1,7 +1,7 @@
 import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn, OneToMany } from "typeorm";
-import { Employee } from "./Employee";
-import { Company } from "./Company";
-import { PaycheckLineItem } from "./PaycheckLineItem";
+import { Employee } from "./Employee.js";
+import { Company } from "./Company.js";
+import { PaycheckLineItem } from "./PaycheckLineItem.js";
 
 export enum PaycheckStatus {
     DRAFT = "DRAFT",

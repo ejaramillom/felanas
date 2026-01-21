@@ -2,6 +2,7 @@ import "reflect-metadata";
 import express from "express";
 import { AppDataSource } from "./config/database.js";
 import employeeRoutes from "./routes/employeeRoutes.js";
+import paycheckRoutes from "./routes/paycheckRoutes.js";
 import { fileURLToPath } from 'url';
 
 const app = express();
@@ -11,21 +12,25 @@ app.use(express.json());
 app.get("/", (req, res) => {
     res.json({ message: "[Index]Felanas API is running" });
 });
-app.use("/employees", employeeRoutes)
+app.use("/employees", employeeRoutes);
+app.use("/paychecks", paycheckRoutes);
 
-// Initialize DB and start server only if this file is run directly
-if (process.argv[1] === fileURLToPath(import.meta.url)) {
-    (async () => {
+// Initialize DB and start server
+(async () => {
+    // Check if we are in a test environment to avoid port conflicts or double init
+    if (process.env.NODE_ENV !== 'test') {
         try {
-            await AppDataSource.initialize();
-            console.log("[Index] Database initialized");
+            if (!AppDataSource.isInitialized) {
+                await AppDataSource.initialize();
+                console.log("[Index] Database initialized");
+            }
             app.listen(PORT, () => {
                 console.log(`[Index] Server running on port ${PORT}`);
             });
         } catch (error) {
             console.log(error);
         }
-    })();
-}
+    }
+})();
 
 export default app;
