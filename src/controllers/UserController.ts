@@ -22,9 +22,8 @@ export class UserController {
             return res.status(401).json({ message: "Invalid credentials" });
         }
 
-        // Compare password (In real app use bcrypt.compare)
-        // const isMatch = await bcrypt.compare(password, user.passwordHash);
-        const isMatch = password === user.passwordHash;
+        // Compare password using the method on the entity
+        const isMatch = await user.comparePassword(password);
 
         if (!isMatch) {
             return res.status(401).json({ message: "Invalid credentials" });
@@ -58,8 +57,7 @@ export class UserController {
         }
 
         const userRepo = AppDataSource.getRepository(User);
-        // Basic hash - in production use async and proper salt rounds
-        const hashedPassword = password; // TODO: Integrate real hashing or use existing service
+        const hashedPassword = await bcrypt.hash(password, 10);
 
         const newUser = userRepo.create({
             username,

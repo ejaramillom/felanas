@@ -32,4 +32,9 @@ export class User {
     @ManyToOne(() => Company, (company) => company.users, { onDelete: "CASCADE" })
     @JoinColumn({ name: "company_id" })
     company!: Relation<Company>;
+
+    async comparePassword(password: string): Promise<boolean> {
+        const bcrypt = await import('bcryptjs');
+        return bcrypt.default.compare(password, this.passwordHash);
+    }
 }

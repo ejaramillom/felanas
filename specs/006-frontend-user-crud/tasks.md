@@ -89,20 +89,20 @@ description: "Task list for Frontend User Management & Containerization"
 - [x] T025 [P] [US2] Implement UserController.update (PUT /users/:id) in src/controllers/UserController.ts
 - [x] T026 [P] [US2] Implement UserController.delete (DELETE /users/:id) in src/controllers/UserController.ts
 - [x] T027 [P] [US2] Define IAuthService interface for pluggable authentication in src/services/interfaces/IAuthService.ts
-- [ ] T028 [P] [US2] Implement LocalAuthService (IAuthService) in src/services/LocalAuthService.ts
-- [ ] T029 [P] [US2] Implement AuthController.login (POST /auth/login) in src/controllers/AuthController.ts
-- [ ] T030 [US2] Register user and auth routes in src/routes/userRoutes.ts and src/routes/authRoutes.ts, add to src/index.ts
-- [ ] T031 [US2] Apply authMiddleware to user routes in src/routes/userRoutes.ts (Admin check)
+- [x] T028 [P] [US2] Implement LocalAuthService (IAuthService) in src/services/LocalAuthService.ts
+- [x] T029 [P] [US2] Implement AuthController.login (POST /auth/login) in src/controllers/AuthController.ts
+- [x] T030 [US2] Register user and auth routes in src/routes/userRoutes.ts and src/routes/authRoutes.ts, add to src/index.ts
+- [x] T031 [US2] Apply authMiddleware to user routes in src/routes/userRoutes.ts (Admin check)
 
 ### Implementation for User Story 2 - Frontend
 
 - [ ] T032 [P] [US2] Create API client service with Axios interceptors in frontend/src/services/api.ts
-- [ ] T033 [P] [US2] Create AuthProvider context for managing JWT state in frontend/src/context/AuthContext.tsx
-- [ ] T034 [P] [US2] Implement Login page component in frontend/src/pages/Login.tsx
-- [ ] T035 [P] [US2] Implement Layout component (Sidebar/Header) in frontend/src/components/Layout.tsx
-- [ ] T036 [P] [US2] Implement UserList component using MUI DataGrid in frontend/src/pages/UserList.tsx
-- [ ] T037 [P] [US2] Implement UserForm dialog/page for Create/Edit in frontend/src/components/UserForm.tsx
-- [ ] T038 [US2] Integrate components into App router in frontend/src/App.tsx
+- [x] T033 [P] [US2] Create AuthProvider context for managing JWT state in frontend/src/context/AuthContext.tsx
+- [x] T034 [P] [US2] Implement Login page component in frontend/src/pages/Login.tsx
+- [x] T035 [P] [US2] Implement Layout component (Sidebar/Header) in frontend/src/components/Layout.tsx
+- [x] T036 [P] [US2] Implement UserList component using MUI DataGrid in frontend/src/pages/UserList.tsx
+- [x] T037 [P] [US2] Implement UserForm dialog/page for Create/Edit in frontend/src/components/UserForm.tsx
+- [x] T038 [US2] Integrate components into App router in frontend/src/App.tsx
 
 **Checkpoint**: Full CRUD functionality available in frontend.
 

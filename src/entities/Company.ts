@@ -15,6 +15,9 @@ export class Company {
     @CreateDateColumn({ name: "created_at" })
     createdAt!: Date;
 
+    @Column({ name: "trial_ends_at", type: "timestamp", nullable: true })
+    trialEndsAt?: Date;
+
     @OneToMany(() => User, (user) => user.company)
     users!: Relation<User[]>;
 }

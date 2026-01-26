@@ -31,13 +31,7 @@
 
 *GATE: Must pass before Phase 0 research. Re-check after Phase 1 design.*
 
-- **Architectural Integrity**: Does the design follow DDD? Are business logic, data, and presentation properly separated? Is sharding handled correctly?
-- **Code Quality**: Does the proposal adhere to style guides and idiomatic patterns (e.g., Service Objects)?
-- **Testing Standards**: Does the plan include comprehensive Unit, Integration, and System tests? Is TDD considered?
-- **Security & Compliance**: Are secrets handled securely? Is input validation and authN/authZ accounted for?
-- **Performance & Scalability**: Are N+1 queries prevented? Are caching and background jobs used where appropriate?
-- **Observability**: Is structured logging and error context planned?
-- **User Experience Consistency**: Does the UI component align with the design system?
+[Gates determined based on constitution file]
 
 ## Project Structure
 

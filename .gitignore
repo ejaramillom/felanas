@@ -19,3 +19,7 @@ Thumbs.db
 /blob-report/
 /playwright/.cache/
 /playwright/.auth/
+
+# Agents
+.codex
+.gemini

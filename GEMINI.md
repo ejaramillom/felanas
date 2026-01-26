@@ -3,6 +3,8 @@
 Auto-generated from all feature plans. Last updated: 2025-12-30
 
 ## Active Technologies
+- TypeScript 5.x (Node.js 20+), React 19 (008-company-auth)
+- PostgreSQL (via TypeORM) (008-company-auth)
 
 - TypeScript / Node.js + Express, JWT, TypeORM (or similar SQL abstraction) (005-company-entity-isolation)
 
@@ -22,6 +24,7 @@ npm test && npm run lint
 TypeScript / Node.js: Follow standard conventions
 
 ## Recent Changes
+- 008-company-auth: Added TypeScript 5.x (Node.js 20+), React 19
 
 - 005-company-entity-isolation: Added TypeScript / Node.js + Express, JWT, TypeORM (or similar SQL abstraction)
 

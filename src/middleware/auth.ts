@@ -1,10 +1,12 @@
 import { Request, Response, NextFunction } from "express";
 import jwt from "jsonwebtoken";
 import { CurrentContext } from "../types/Context.js";
+import { AppDataSource } from "../config/database.js";
+import { Company } from "../entities/Company.js";
 
 const JWT_SECRET = process.env.JWT_SECRET || "default_secret_do_not_use_in_production";
 
-export const authMiddleware = (req: Request, res: Response, next: NextFunction) => {
+export const authMiddleware = async (req: Request, res: Response, next: NextFunction) => {
     const authHeader = req.headers.authorization;
 
     if (!authHeader) {
@@ -19,9 +21,19 @@ export const authMiddleware = (req: Request, res: Response, next: NextFunction) 
     try {
         const decoded = jwt.verify(token, JWT_SECRET) as any;
         
-        // Ensure the token has the necessary claims
         if (!decoded.companyId || !decoded.userId) {
             return res.status(403).json({ message: "Invalid token claims" });
+        }
+
+        // Trial Expiration Check
+        const companyRepo = AppDataSource.getRepository(Company);
+        const company = await companyRepo.findOne({ where: { id: decoded.companyId } });
+
+        if (company?.trialEndsAt && new Date() > company.trialEndsAt) {
+            return res.status(403).json({ 
+                message: "Company trial has expired",
+                code: "TRIAL_EXPIRED"
+            });
         }
 
         const context: CurrentContext = {

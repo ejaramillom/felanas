@@ -1,0 +1,133 @@
+openapi: 3.0.0
+info:
+  title: Company Authentication API
+  version: 1.0.0
+paths:
+  /auth/register:
+    post:
+      summary: Register a new company and admin user
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - companyName
+                - email
+                - password
+                - activationKey
+              properties:
+                companyName:
+                  type: string
+                  example: "Felanas"
+                email:
+                  type: string
+                  format: email
+                  example: "admin@felanas.com"
+                password:
+                  type: string
+                  format: password
+                  minLength: 8
+                  example: "SecurePass123!"
+                activationKey:
+                  type: string
+                  example: "KEY-1234-5678"
+      responses:
+        '201':
+          description: Registration successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthResponse'
+        '400':
+          description: Invalid input or activation key mismatch
+        '409':
+          description: Company or User already exists
+
+  /auth/login:
+    post:
+      summary: Login user
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - email
+                - password
+              properties:
+                email:
+                  type: string
+                  format: email
+                password:
+                  type: string
+                  format: password
+      responses:
+        '200':
+          description: Login successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthResponse'
+        '401':
+          description: Invalid credentials
+
+  /auth/me:
+    get:
+      summary: Get current user info
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Current user details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+  schemas:
+    AuthResponse:
+      type: object
+      properties:
+        token:
+          type: string
+        user:
+          $ref: '#/components/schemas/User'
+        company:
+          $ref: '#/components/schemas/Company'
+
+    User:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        username:
+          type: string
+        role:
+          type: string
+          enum: [ADMIN, MANAGER, VIEWER]
+        companyId:
+          type: string
+          format: uuid
+
+    Company:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        trial_ends_at:
+          type: string
+          format: date-time
