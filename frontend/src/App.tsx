@@ -7,6 +7,7 @@ import { UserList } from './pages/UserList';
 import { NotFoundPage } from './pages/NotFoundPage';
 import { Layout } from './components/Layout';
 import { ProtectedRoute } from './components/ProtectedRoute';
+import { PublicRoute } from './components/PublicRoute';
 import './App.css';
 
 function App() {
@@ -14,11 +15,13 @@ function App() {
     <AuthProvider>
       <Router>
         <Routes>
-          {/* Public Routes */}
-          <Route path="/register" element={<RegisterPage />} />
-          <Route path="/login" element={<LoginPage />} />
+          {/* Public Routes - Only accessible when NOT logged in */}
+          <Route element={<PublicRoute />}>
+            <Route path="/register" element={<RegisterPage />} />
+            <Route path="/login" element={<LoginPage />} />
+          </Route>
 
-          {/* Protected Routes */}
+          {/* Protected Routes - Only accessible when logged in */}
           <Route element={<ProtectedRoute />}>
             <Route element={<Layout />}>
               <Route path="/" element={<Dashboard />} />
@@ -26,9 +29,7 @@ function App() {
             </Route>
           </Route>
 
-          {/* Catch-all Route - Redirects or shows 404 depending on auth? 
-              For now, show 404 page which links to home (which will redirect to login if unauth) 
-          */}
+          {/* Catch-all Route */}
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </Router>

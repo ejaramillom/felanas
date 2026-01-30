@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { TextField, Button, Box, Typography, Alert, Paper } from '@mui/material';
-import { authService } from '../../services/auth';
+import { useAuth } from '../../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
 
 export const RegisterForm: React.FC = () => {
@@ -12,6 +12,7 @@ export const RegisterForm: React.FC = () => {
     });
     const [error, setError] = useState<string | null>(null);
     const [loading, setLoading] = useState(false);
+    const { register } = useAuth();
     const navigate = useNavigate();
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -24,8 +25,7 @@ export const RegisterForm: React.FC = () => {
         setLoading(true);
 
         try {
-            const response = await authService.register(formData);
-            localStorage.setItem('token', response.token);
+            await register(formData);
             navigate('/'); // Redirect to dashboard or home
         } catch (err: any) {
             setError(err.response?.data?.message || 'Registration failed');

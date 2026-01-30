@@ -3,7 +3,6 @@ import express from "express";
 import { AppDataSource } from "./config/database.js";
 import employeeRoutes from "./routes/employeeRoutes.js";
 import paycheckRoutes from "./routes/paycheckRoutes.js";
-import { fileURLToPath } from 'url';
 
 const app = express();
 const PORT = process.env.PORT || 3000;

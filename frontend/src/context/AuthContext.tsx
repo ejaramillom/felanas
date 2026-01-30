@@ -18,24 +18,38 @@ const AuthContext = createContext<AuthContextType | undefined>(undefined);
 export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
     const [user, setUser] = useState<AuthResponse['user'] | null>(null);
     const [company, setCompany] = useState<AuthResponse['company'] | null>(null);
-    const [token, setToken] = useState<string | null>(localStorage.getItem('token'));
+    const [token, setToken] = useState<string | null>(() => {
+        const t = localStorage.getItem('token');
+        return (t === 'null' || t === 'undefined') ? null : t;
+    });
     const [loading, setLoading] = useState(true);
+
+    const logout = () => {
+        setUser(null);
+        setCompany(null);
+        setToken(null);
+        localStorage.removeItem('token');
+    };
 
     useEffect(() => {
         const initAuth = async () => {
-            if (token) {
+            const currentToken = localStorage.getItem('token');
+            if (currentToken && currentToken !== 'null' && currentToken !== 'undefined') {
                 try {
-                    const data = await authService.getMe(token);
+                    const data = await authService.getMe(currentToken);
                     setUser(data.user);
                     setCompany(data.company);
+                    setToken(currentToken);
                 } catch (err) {
                     logout();
                 }
+            } else {
+                logout();
             }
             setLoading(false);
         };
         initAuth();
-    }, [token]);
+    }, []);
 
     const login = async (data: any) => {
         const response = await authService.login(data);
@@ -51,13 +65,6 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
         setCompany(response.company);
         setToken(response.token);
         localStorage.setItem('token', response.token);
-    };
-
-    const logout = () => {
-        setUser(null);
-        setCompany(null);
-        setToken(null);
-        localStorage.removeItem('token');
     };
 
     return (

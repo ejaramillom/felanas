@@ -19,6 +19,11 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.backend
+      target: builder
+    volumes:
+      - .:/app
+      - /app/node_modules
+    command: npm run dev
     environment:
       DB_HOST: db
       DB_PORT: 5432
@@ -37,8 +42,15 @@ services:
     build:
       context: ./frontend
       dockerfile: Dockerfile.frontend
+      target: builder
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    command: npm run dev
     ports:
       - "8080:8080"
+    environment:
+      - VITE_API_URL=http://localhost:3000
     depends_on:
       - backend
 

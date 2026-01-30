@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { TextField, Button, Box, Typography, Alert, Paper } from '@mui/material';
+import { TextField, Button, Box, Typography, Alert, Paper, Link } from '@mui/material';
 import { useAuth } from '../../context/AuthContext';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link as RouterLink } from 'react-router-dom';
 
 export const LoginForm: React.FC = () => {
     const [formData, setFormData] = useState({
@@ -67,11 +67,16 @@ export const LoginForm: React.FC = () => {
                     fullWidth
                     type="submit"
                     variant="contained"
-                    sx={{ mt: 3 }}
+                    sx={{ mt: 3, mb: 2 }}
                     disabled={loading}
                 >
                     {loading ? 'Logging in...' : 'Login'}
                 </Button>
+                <Box sx={{ textAlign: 'center' }}>
+                    <Link component={RouterLink} to="/register" variant="body2">
+                        Don't have an account? Register
+                    </Link>
+                </Box>
             </Box>
         </Paper>
     );
