@@ -1,7 +1,7 @@
 import crypto from 'crypto';
 
 const ALGORITHM = 'aes-256-gcm';
-const SECRET_KEY = process.env.ACTIVATION_KEY_SECRET || 'default_secret_32_chars_long_12345'; // Must be 32 chars
+const SECRET_KEY = process.env.ACTIVATION_KEY_SECRET ?? (() => { throw new Error("ACTIVATION_KEY_SECRET must be set"); })();
 
 export class EncryptionUtils {
     static encrypt(text: string): string {
