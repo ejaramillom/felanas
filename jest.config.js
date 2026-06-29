@@ -7,10 +7,11 @@ export default {
   ...defaultPreset,
   testEnvironment: "node",
   moduleNameMapper: {
-    '^(\.{1,2}/.*)\.js$': '$1',
+    '^(\\.{1,2}/.*)\.js$': '$1',
   },
   transform: {
     ...defaultPreset.transform,
   },
   testPathIgnorePatterns: ["/node_modules/", "/e2e/", ".*\\.spec\\.ts$"],
+  setupFiles: ["<rootDir>/tests/setup.ts"],
 };
