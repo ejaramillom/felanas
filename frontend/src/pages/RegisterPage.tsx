@@ -1,13 +1,10 @@
-import React from 'react';
-import { Container } from '@mui/material';
-import { RegisterForm } from '../components/auth/RegisterForm';
+import { AuthFormLayout } from "@/widgets/auth-form/AuthFormLayout";
+import { RegisterForm } from "@/features/auth/register/ui/RegisterForm";
 
-const RegisterPage: React.FC = () => {
-    return (
-        <Container maxWidth="sm">
-            <RegisterForm />
-        </Container>
-    );
-};
-
-export default RegisterPage;
+export default function RegisterPage() {
+  return (
+    <AuthFormLayout>
+      <RegisterForm />
+    </AuthFormLayout>
+  );
+}

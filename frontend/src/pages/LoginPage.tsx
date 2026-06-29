@@ -1,13 +1,10 @@
-import React from 'react';
-import { Container } from '@mui/material';
-import { LoginForm } from '../components/auth/LoginForm';
+import { AuthFormLayout } from "@/widgets/auth-form/AuthFormLayout";
+import { LoginForm } from "@/features/auth/login/ui/LoginForm";
 
-const LoginPage: React.FC = () => {
-    return (
-        <Container maxWidth="sm">
-            <LoginForm />
-        </Container>
-    );
-};
-
-export default LoginPage;
+export default function LoginPage() {
+  return (
+    <AuthFormLayout>
+      <LoginForm />
+    </AuthFormLayout>
+  );
+}

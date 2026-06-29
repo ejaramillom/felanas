@@ -1,18 +1,8 @@
-import React from 'react';
-import { Navigate, Outlet } from 'react-router-dom';
-import { useAuth } from '../context/AuthContext';
-import { CircularProgress, Box } from '@mui/material';
+import { Navigate, Outlet } from "react-router-dom";
+import { useAuth } from "@/context/AuthContext";
 
-export const PublicRoute: React.FC = () => {
-    const { token, loading } = useAuth();
-
-    if (loading) {
-        return (
-            <Box sx={{ display: 'flex', justifyContent: 'center', mt: 10 }}>
-                <CircularProgress />
-            </Box>
-        );
-    }
-
-    return !token ? <Outlet /> : <Navigate to="/" replace />;
-};
+export function PublicRoute() {
+  const { user, loading } = useAuth();
+  if (loading) return <div className="flex justify-center items-center min-h-screen"><div className="h-8 w-8 animate-spin rounded-full border-4 border-[var(--color-brand)] border-t-transparent" /></div>;
+  return user ? <Navigate to="/" replace /> : <Outlet />;
+}
