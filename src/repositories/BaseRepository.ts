@@ -36,9 +36,14 @@ export class BaseRepository<T extends ObjectLiteral> {
     }
 
     async save(entity: DeepPartial<T>, options?: SaveOptions): Promise<T> {
-        // Enforce companyId on save
-        const scopedEntity = { ...entity, companyId: this.companyId };
-        return this.repository.save(scopedEntity, options);
+        const scoped = { ...entity, companyId: this.companyId } as DeepPartial<T>;
+        if ((scoped as any).id) {
+            const existing = await this.findOne({ where: { id: (scoped as any).id } as any });
+            if (!existing) {
+                throw new Error("Record not found or access denied");
+            }
+        }
+        return this.repository.save(scoped, options);
     }
 
     // Add other methods as needed (delete, update, etc.)
