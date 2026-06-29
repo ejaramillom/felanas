@@ -1,0 +1,82 @@
+@import "tailwindcss";
+
+:root {
+  /* Brand amber */
+  --color-brand:            #c48b31;
+  --color-brand-dark:       #976317;
+  --color-brand-bright:     #eab34e;
+  --color-brand-warm:       #b87526;
+
+  /* Light theme (default) — warm cream, NOT white */
+  --background:             247 56% 90%;   /* #f7e2d1 */
+  --foreground:             270 8% 7%;     /* #141215 */
+  --card:                   30 35% 86%;    /* #f2d9c5 */
+  --card-foreground:        270 8% 7%;
+  --border:                 30 26% 82%;    /* #e8d5c2 */
+  --input:                  30 26% 82%;
+  --primary:                33 59% 48%;    /* #c48b31 amber */
+  --primary-foreground:     0 0% 100%;
+  --muted:                  30 20% 84%;
+  --muted-foreground:       270 5% 28%;    /* #2d2b2e */
+  --accent:                 33 59% 48%;
+  --accent-foreground:      0 0% 100%;
+  --destructive:            0 84% 60%;
+  --ring:                   33 59% 48%;
+  --radius:                 0.5rem;
+
+  /* Sidebar (dark on light theme) */
+  --sidebar-bg:             222 47% 11%;   /* #1e293b slate dark */
+  --sidebar-text:           210 40% 96%;
+  --sidebar-text-muted:     215 16% 47%;
+  --sidebar-border:         217 33% 17%;
+  --sidebar-active:         33 59% 48%;    /* brand amber */
+}
+
+.dark {
+  --background:             0 0% 4%;       /* #0a0a0a */
+  --foreground:             38 32% 89%;    /* #eee8d9 warm off-white */
+  --card:                   0 0% 8%;       /* #141414 */
+  --card-foreground:        38 32% 89%;
+  --border:                 220 9% 22%;    /* #333540 */
+  --input:                  220 9% 22%;
+  --primary:                33 59% 48%;    /* amber stays */
+  --primary-foreground:     0 0% 4%;
+  --muted:                  220 13% 15%;   /* #212328 */
+  --muted-foreground:       0 0% 62%;      /* #9f9f9f */
+  --accent:                 33 59% 48%;
+  --accent-foreground:      0 0% 4%;
+  --destructive:            0 63% 31%;
+  --ring:                   33 59% 48%;
+
+  --sidebar-bg:             0 0% 4%;
+  --sidebar-text:           38 32% 89%;
+  --sidebar-text-muted:     0 0% 62%;
+  --sidebar-border:         220 9% 15%;
+  --sidebar-active:         33 59% 48%;
+}
+
+@theme inline {
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+  --color-destructive: hsl(var(--destructive));
+  --color-ring: hsl(var(--ring));
+  --radius-sm: calc(var(--radius) - 2px);
+  --radius-md: var(--radius);
+  --radius-lg: calc(var(--radius) + 2px);
+}
+
+body {
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+}
