@@ -1,7 +1,7 @@
 import request from 'supertest';
 import app from '@src/app.js'; // Ensure .js extension for ESM imports
 import { AppDataSource } from '@src/config/database.js';
-import { User, UserRole } from '@src/entities/User.js';
+import { User, UserRole } from '@src/contexts/identity/domain/User.js';
 import { Company } from '@src/contexts/identity/domain/Company.js';
 import jwt from 'jsonwebtoken';
 

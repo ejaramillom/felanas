@@ -1,6 +1,6 @@
 import { AppDataSource } from "../config/database.js";
 import { Company } from "../contexts/identity/domain/Company.js";
-import { User, UserRole } from "../entities/User.js";
+import { User, UserRole } from "../contexts/identity/domain/User.js";
 import bcrypt from "bcryptjs";
 
 export class ProvisioningService {

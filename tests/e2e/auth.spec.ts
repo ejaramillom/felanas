@@ -3,7 +3,7 @@ import { AppDataSource } from '@src/config/database.js';
 import { ActivationKey } from '@src/entities/ActivationKey.js';
 import { EncryptionUtils } from '@src/utils/EncryptionUtils.js';
 import { Company } from '@src/entities/Company.js';
-import { User } from '@src/entities/User.js';
+import { User } from '@src/contexts/identity/domain/User.js';
 
 test.describe('Authentication & Registration Flow', () => {
   const companyName = 'E2E Test Company';

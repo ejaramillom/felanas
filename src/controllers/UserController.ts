@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { AppDataSource } from "../config/database.js";
-import { User, UserRole } from "../entities/User.js";
+import { User, UserRole } from "../contexts/identity/domain/User.js";
 import bcrypt from "bcryptjs"; // Assuming bcrypt is installed or needs to be
 import jwt from "jsonwebtoken";
 

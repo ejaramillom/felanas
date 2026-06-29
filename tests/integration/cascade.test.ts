@@ -1,7 +1,7 @@
 import { AppDataSource } from "@src/config/database.js";
 import { ProvisioningService } from "@src/services/ProvisioningService.js";
 import { Company } from "@src/contexts/identity/domain/Company.js";
-import { User } from "@src/entities/User.js";
+import { User } from "@src/contexts/identity/domain/User.js";
 import { Employee } from "@src/entities/Employee.js";
 
 describe("Cascade Delete Isolation", () => {

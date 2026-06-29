@@ -3,7 +3,7 @@ import { RegistrationService } from "@src/contexts/identity/application/Registra
 import { ActivationKey } from "@src/contexts/identity/domain/ActivationKey.js";
 import { EncryptionUtils } from "@src/shared/utils/EncryptionUtils.js";
 import { Company } from "@src/contexts/identity/domain/Company.js";
-import { User } from "@src/entities/User.js";
+import { User } from "@src/contexts/identity/domain/User.js";
 import request from 'supertest';
 import app from '@src/app.js';
 
