@@ -1,5 +1,16 @@
 import { DataSource } from "typeorm";
 import dotenv from "dotenv";
+import { AttendanceLog } from "../entities/AttendanceLog.js";
+import { Employee } from "../entities/Employee.js";
+import { Holiday } from "../entities/Holiday.js";
+import { Paycheck } from "../entities/Paycheck.js";
+import { PaycheckConfig } from "../entities/PaycheckConfig.js";
+import { PaycheckLineItem } from "../entities/PaycheckLineItem.js";
+import { SalesLog } from "../entities/SalesLog.js";
+import { Schedule } from "../entities/Schedule.js";
+import { ActivationKey } from "../contexts/identity/domain/ActivationKey.js";
+import { Company } from "../contexts/identity/domain/Company.js";
+import { User } from "../contexts/identity/domain/User.js";
 
 dotenv.config();
 
@@ -16,7 +27,7 @@ export const AppDataSource = new DataSource({
         : (process.env.DB_NAME || "felanas"),
     synchronize: false,
     logging: process.env.NODE_ENV === "development",
-    entities: ["src/entities/**/*.ts", "src/contexts/identity/domain/*.ts"],
+    entities: [AttendanceLog, Employee, Holiday, Paycheck, PaycheckConfig, PaycheckLineItem, SalesLog, Schedule, ActivationKey, Company, User],
     migrations: ["src/migrations/**/*.ts"],
     subscribers: [],
 });
