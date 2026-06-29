@@ -1,8 +1,8 @@
 import { AppDataSource } from "../config/database.js";
-import { Company } from "../entities/Company.js";
+import { Company } from "../contexts/identity/domain/Company.js";
 
 import { PaycheckConfigRepository } from "../repositories/PaycheckConfigRepository.js";
-import { CurrentContext } from "../types/Context.js";
+import { CurrentContext } from "../shared/types/Context.js";
 
 export class ValidationService {
     /**

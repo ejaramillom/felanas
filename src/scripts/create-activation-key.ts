@@ -1,6 +1,6 @@
 import { AppDataSource } from "../config/database.js";
-import { ActivationKey } from "../entities/ActivationKey.js";
-import { EncryptionUtils } from "../utils/EncryptionUtils.js";
+import { ActivationKey } from "../contexts/identity/domain/ActivationKey.js";
+import { EncryptionUtils } from "../shared/utils/EncryptionUtils.js";
 import dotenv from "dotenv";
 
 dotenv.config();
