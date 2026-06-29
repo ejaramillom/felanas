@@ -7,7 +7,11 @@ export default {
   ...defaultPreset,
   testEnvironment: "node",
   moduleNameMapper: {
-    '^(\\.{1,2}/.*)\.js$': '$1',
+    "^@src/(.*)\\.js$": "<rootDir>/src/$1",
+    "^@src/(.*)$": "<rootDir>/src/$1",
+    "^@seeds/(.*)\\.js$": "<rootDir>/seeds/$1",
+    "^@seeds/(.*)$": "<rootDir>/seeds/$1",
+    "^(\\.{1,2}/.*)\.js$": "$1",
   },
   transform: {
     ...defaultPreset.transform,
