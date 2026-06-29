@@ -5,8 +5,8 @@ import app from "./app.js";
 const PORT = process.env.PORT || 3000;
 
 if (process.env.NODE_ENV !== 'test') {
-    if (process.env.NODE_ENV === 'production' && !process.env.JWT_SECRET) {
-        console.error("[Index] FATAL: JWT_SECRET must be set in production");
+    if (process.env.NODE_ENV === 'production' && (!process.env.JWT_SECRET || !process.env.ACTIVATION_KEY_SECRET)) {
+        console.error("[Index] FATAL: JWT_SECRET and ACTIVATION_KEY_SECRET must be set in production");
         process.exit(1);
     }
 
@@ -20,7 +20,8 @@ if (process.env.NODE_ENV !== 'test') {
                 console.log(`[Index] Server running on port ${PORT}`);
             });
         } catch (error) {
-            console.log(error);
+            console.error("[Index] Failed to initialize:", error);
+            process.exit(1);
         }
     })();
 }
