@@ -16,7 +16,7 @@ export const AppDataSource = new DataSource({
         : (process.env.DB_NAME || "felanas"),
     synchronize: false,
     logging: process.env.NODE_ENV === "development",
-    entities: ["src/entities/**/*.ts"],
+    entities: ["src/entities/**/*.ts", "src/contexts/identity/domain/*.ts"],
     migrations: ["src/migrations/**/*.ts"],
     subscribers: [],
 });

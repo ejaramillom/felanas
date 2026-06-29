@@ -4,7 +4,7 @@ import employeeRoutes from "./routes/employeeRoutes.js";
 import paycheckRoutes from "./routes/paycheckRoutes.js";
 import salesRoutes from "./routes/salesRoutes.js";
 import userRoutes from "./routes/userRoutes.js";
-import authRoutes from "./routes/authRoutes.js";
+import authRoutes from "./contexts/identity/interface/authRoutes.js";
 
 const app = express();
 app.use(express.json());
