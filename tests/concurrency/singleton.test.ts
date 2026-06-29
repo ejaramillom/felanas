@@ -1,6 +1,6 @@
-import { AppDataSource } from "../../src/config/database";
-import { PaycheckConfigRepository } from "../../src/repositories/PaycheckConfigRepository";
-import { ProvisioningService } from "../../src/services/ProvisioningService";
+import { AppDataSource } from "@src/config/database";
+import { PaycheckConfigRepository } from "@src/repositories/PaycheckConfigRepository";
+import { ProvisioningService } from "@src/services/ProvisioningService";
 
 describe("Singleton Concurrency", () => {
     beforeAll(async () => {
