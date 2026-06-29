@@ -1,6 +1,6 @@
-import { Company } from "../src/contexts/identity/domain/Company.js";
-import { User, UserRole } from "../src/entities/User.js";
-import { ActivationKey } from "../src/contexts/identity/domain/ActivationKey.js";
+import { Company } from "@src/contexts/identity/domain/Company.js";
+import { User, UserRole } from "@src/entities/User.js";
+import { ActivationKey } from "@src/contexts/identity/domain/ActivationKey.js";
 
 export function createMockCompany(overrides: Partial<Company> = {}): Company {
     const c = new Company();

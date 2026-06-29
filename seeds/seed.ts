@@ -1,8 +1,8 @@
 import "reflect-metadata";
 import dotenv from "dotenv";
-import { AppDataSource } from "../src/config/database.js";
-import { ActivationKey } from "../src/entities/ActivationKey.js";
-import { EncryptionUtils } from "../src/utils/EncryptionUtils.js";
+import { AppDataSource } from "@src/config/database.js";
+import { ActivationKey } from "@src/contexts/identity/domain/ActivationKey.js";
+import { EncryptionUtils } from "@src/shared/utils/EncryptionUtils.js";
 
 dotenv.config();
 

@@ -1,8 +1,8 @@
 import { DataSource } from "typeorm";
-import { ActivationKey } from "../src/contexts/identity/domain/ActivationKey.js";
-import { Company } from "../src/contexts/identity/domain/Company.js";
-import { User, UserRole } from "../src/entities/User.js";
-import { EncryptionUtils } from "../src/shared/utils/EncryptionUtils.js";
+import { ActivationKey } from "@src/contexts/identity/domain/ActivationKey.js";
+import { Company } from "@src/contexts/identity/domain/Company.js";
+import { User, UserRole } from "@src/entities/User.js";
+import { EncryptionUtils } from "@src/shared/utils/EncryptionUtils.js";
 import bcrypt from "bcryptjs";
 
 export async function seedActivationKey(
