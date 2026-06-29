@@ -41,12 +41,12 @@ test.describe('Authentication & Registration Flow', () => {
     await page.click('button[type="submit"]');
 
     // Should redirect to dashboard placeholder
-    await expect(page.locator('text=Dashboard (Placeholder)')).toBeVisible();
+    await expect(page.locator('[data-testid="sidebar"]')).toBeVisible();
 
     // 2. Logout (Manual by clearing local storage for now as there's no UI button)
     await page.evaluate(() => localStorage.removeItem('token'));
     await page.reload();
-    await expect(page.locator('text=Dashboard (Placeholder)')).not.toBeVisible();
+    await expect(page.locator('[data-testid="sidebar"]')).not.toBeVisible();
 
     // 3. Login
     await page.goto('http://localhost:5173/login');
@@ -55,7 +55,7 @@ test.describe('Authentication & Registration Flow', () => {
     await page.click('button[type="submit"]');
 
     // Should redirect back to dashboard
-    await expect(page.locator('text=Dashboard (Placeholder)')).toBeVisible();
+    await expect(page.locator('[data-testid="sidebar"]')).toBeVisible();
   });
 
   test('Registration fails with invalid key', async ({ page }) => {
