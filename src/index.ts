@@ -5,6 +5,11 @@ import app from "./app.js";
 const PORT = process.env.PORT || 3000;
 
 if (process.env.NODE_ENV !== 'test') {
+    if (process.env.NODE_ENV === 'production' && !process.env.JWT_SECRET) {
+        console.error("[Index] FATAL: JWT_SECRET must be set in production");
+        process.exit(1);
+    }
+
     (async () => {
         try {
             if (!AppDataSource.isInitialized) {

@@ -20,17 +20,20 @@ export const authMiddleware = async (req: Request, res: Response, next: NextFunc
 
     try {
         const decoded = jwt.verify(token, JWT_SECRET) as any;
-        
+
         if (!decoded.companyId || !decoded.userId) {
             return res.status(403).json({ message: "Invalid token claims" });
         }
 
-        // Trial Expiration Check
         const companyRepo = AppDataSource.getRepository(Company);
         const company = await companyRepo.findOne({ where: { id: decoded.companyId } });
 
-        if (company?.trialEndsAt && new Date() > company.trialEndsAt) {
-            return res.status(403).json({ 
+        if (!company) {
+            return res.status(401).json({ message: "Company not found" });
+        }
+
+        if (company.trialEndsAt && new Date() > company.trialEndsAt) {
+            return res.status(403).json({
                 message: "Company trial has expired",
                 code: "TRIAL_EXPIRED"
             });
