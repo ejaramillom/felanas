@@ -1,10 +1,10 @@
 import request from 'supertest';
-import app from '../../src/app.js';
-import { AppDataSource } from '../../src/config/database.js';
-import { Company } from '../../src/contexts/identity/domain/Company.js';
-import { Employee } from '../../src/entities/Employee.js';
-import { PaycheckConfig } from '../../src/entities/PaycheckConfig.js';
-import { User, UserRole } from '../../src/entities/User.js';
+import app from '@src/app.js';
+import { AppDataSource } from '@src/config/database.js';
+import { Company } from '@src/contexts/identity/domain/Company.js';
+import { Employee } from '@src/entities/Employee.js';
+import { PaycheckConfig } from '@src/entities/PaycheckConfig.js';
+import { User, UserRole } from '@src/entities/User.js';
 import jwt from 'jsonwebtoken';
 
 describe('Paycheck Generation Integration', () => {

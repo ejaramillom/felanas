@@ -1,9 +1,9 @@
 import request from "supertest";
-import app from "../../src/app.js";
-import { AppDataSource } from "../../src/config/database";
+import app from "@src/app.js";
+import { AppDataSource } from "@src/config/database";
 import jwt from "jsonwebtoken";
-import { ProvisioningService } from "../../src/services/ProvisioningService";
-import { EmployeeRepository } from "../../src/repositories/EmployeeRepository";
+import { ProvisioningService } from "@src/services/ProvisioningService";
+import { EmployeeRepository } from "@src/repositories/EmployeeRepository";
 
 const JWT_SECRET = process.env.JWT_SECRET || "default_secret_do_not_use_in_production";
 

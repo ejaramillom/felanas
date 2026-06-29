@@ -1,11 +1,11 @@
-import { AppDataSource } from "../../src/config/database.js";
-import { RegistrationService } from "../../src/contexts/identity/application/RegistrationService.js";
-import { ActivationKey } from "../../src/contexts/identity/domain/ActivationKey.js";
-import { EncryptionUtils } from "../../src/shared/utils/EncryptionUtils.js";
-import { Company } from "../../src/contexts/identity/domain/Company.js";
-import { User } from "../../src/entities/User.js";
+import { AppDataSource } from "@src/config/database.js";
+import { RegistrationService } from "@src/contexts/identity/application/RegistrationService.js";
+import { ActivationKey } from "@src/contexts/identity/domain/ActivationKey.js";
+import { EncryptionUtils } from "@src/shared/utils/EncryptionUtils.js";
+import { Company } from "@src/contexts/identity/domain/Company.js";
+import { User } from "@src/entities/User.js";
 import request from 'supertest';
-import app from '../../src/app.js';
+import app from '@src/app.js';
 
 describe('Authentication Integration Tests', () => {
     beforeAll(async () => {
