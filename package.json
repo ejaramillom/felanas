@@ -11,7 +11,8 @@
     "dev": "NODE_OPTIONS='--loader ts-node/esm --no-warnings' nodemon src/index.ts",
     "typeorm": "typeorm-ts-node-commonjs -d src/config/database.ts",
     "migration:run": "npm run typeorm migration:run",
-    "schema:sync": "npm run typeorm schema:sync"
+    "schema:sync": "npm run typeorm schema:sync",
+    "seed": "NODE_OPTIONS='--loader ts-node/esm --no-warnings' ts-node seeds/seed.ts"
   },
   "repository": {
     "type": "git",
