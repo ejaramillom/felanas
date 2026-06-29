@@ -1,6 +1,6 @@
 import { Repository, EntityTarget, ObjectLiteral, FindOneOptions, DeepPartial, FindOptionsWhere, FindManyOptions, SaveOptions } from "typeorm";
 import { AppDataSource } from "../config/database.js";
-import { CurrentContext } from "../types/Context.js";
+import { CurrentContext } from "../shared/types/Context.js";
 
 export class BaseRepository<T extends ObjectLiteral> {
     private repository: Repository<T>;
@@ -50,5 +50,10 @@ export class BaseRepository<T extends ObjectLiteral> {
         
         const scopedCriteria = this.applyScope(criteria as FindOptionsWhere<T>);
         return this.repository.delete(scopedCriteria);
+    }
+
+    async saveMany(entities: DeepPartial<T>[]): Promise<T[]> {
+        const scoped = entities.map(e => ({ ...e, companyId: this.companyId })) as DeepPartial<T>[];
+        return this.repository.save(scoped);
     }
 }

@@ -1,8 +1,8 @@
 import { AppDataSource } from "../../src/config/database.js";
-import { RegistrationService } from "../../src/services/RegistrationService.js";
-import { ActivationKey } from "../../src/entities/ActivationKey.js";
-import { EncryptionUtils } from "../../src/utils/EncryptionUtils.js";
-import { Company } from "../../src/entities/Company.js";
+import { RegistrationService } from "../../src/contexts/identity/application/RegistrationService.js";
+import { ActivationKey } from "../../src/contexts/identity/domain/ActivationKey.js";
+import { EncryptionUtils } from "../../src/shared/utils/EncryptionUtils.js";
+import { Company } from "../../src/contexts/identity/domain/Company.js";
 import { User } from "../../src/entities/User.js";
 import request from 'supertest';
 import app from '../../src/app.js';
@@ -41,7 +41,10 @@ describe('Authentication Integration Tests', () => {
             activationKey: rawKey
         };
 
-        const result = await RegistrationService.register(registrationData);
+        const companyRepo = AppDataSource.getRepository(Company);
+        const userRepo = AppDataSource.getRepository(User);
+        const svc = new RegistrationService(keyRepo, companyRepo, userRepo);
+        const result = await svc.register(registrationData);
 
         expect(result.company.name).toBe(companyName);
         expect(result.user.username).toBe(registrationData.email);

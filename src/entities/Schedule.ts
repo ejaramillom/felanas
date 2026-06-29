@@ -1,6 +1,6 @@
 import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn, Unique } from "typeorm";
 import { Employee } from "./Employee.js";
-import { Company } from "./Company.js";
+import { Company } from "../contexts/identity/domain/Company.js";
 
 export enum ShiftType {
     MORNING = "MORNING",

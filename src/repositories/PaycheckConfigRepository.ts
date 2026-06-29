@@ -1,6 +1,6 @@
 import { BaseRepository } from "./BaseRepository.js";
 import { PaycheckConfig } from "../entities/PaycheckConfig.js";
-import { CurrentContext } from "../types/Context.js";
+import { CurrentContext } from "../shared/types/Context.js";
 import { DeepPartial } from "typeorm";
 
 export class PaycheckConfigRepository extends BaseRepository<PaycheckConfig> {

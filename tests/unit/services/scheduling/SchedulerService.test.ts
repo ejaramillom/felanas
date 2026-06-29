@@ -6,7 +6,7 @@ import { Schedule, ShiftType } from "../../../../src/entities/Schedule";
 
 // Mock Repositories
 const mockScheduleRepo = {
-    save: jest.fn().mockImplementation((s) => Promise.resolve(s))
+    saveMany: jest.fn().mockImplementation((s) => Promise.resolve(s))
 } as unknown as ScheduleRepository;
 
 const mockEmployeeRepo = {
@@ -57,8 +57,8 @@ describe("SchedulerService", () => {
         const result = await service.generateSchedule("C1", new Date("2026-01-01"), new Date("2026-01-01"));
 
         expect(result).toHaveLength(2);
-        expect(result[0].employeeId).toBe("A");
-        expect(result[1].employeeId).toBe("A");
+        expect(result[0]!.employeeId).toBe("A");
+        expect(result[1]!.employeeId).toBe("A");
         expect(result.some(s => s.shift === ShiftType.MORNING)).toBe(true);
         expect(result.some(s => s.shift === ShiftType.AFTERNOON)).toBe(true);
     });

@@ -24,3 +24,17 @@ Thumbs.db
 .codex
 .gemini
 .env.test
+
+# Stale tsc output (seeds, tests, frontend compiled artifacts)
+seeds/*.js
+seeds/*.js.map
+seeds/*.d.ts
+seeds/*.d.ts.map
+tests/**/*.js
+tests/**/*.js.map
+tests/**/*.d.ts
+tests/**/*.d.ts.map
+frontend/src/**/*.js
+frontend/src/**/*.js.map
+frontend/src/**/*.d.ts
+frontend/src/**/*.d.ts.map

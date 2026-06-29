@@ -20,16 +20,16 @@
 - [ ] Tester — npm test + playwright E2E
 
 ## Must-Fix Items (Aether FAIL)
-- [ ] 1. CORS middleware — `npm install cors` + add to src/app.ts
-- [ ] 2. Remove /users/login bypass — delete POST /login from src/routes/userRoutes.ts
-- [ ] 3. Null company → 401 in src/shared/middleware/auth.ts
-- [ ] 4. index.css body bg overrides design tokens — remove bg-color from body rule
-- [ ] 5. Missing .js extensions in src/routes/userRoutes.ts
-- [ ] 6. Delete old duplicate files (10 backend + 4 frontend)
-- [ ] 7. Startup secrets guard — fail fast in production on default secrets
+- [x] 1. CORS middleware — `npm install cors` + add to src/app.ts (`9e073fa`)
+- [x] 2. Remove /users/login bypass — deleted POST /login from src/routes/userRoutes.ts (`9e073fa`)
+- [x] 3. Null company → 401 in src/shared/middleware/auth.ts (`9e073fa`)
+- [x] 4. index.css body bg overrides design tokens — removed bg/color from :root (`5796324`)
+- [x] 5. Missing .js extensions in src/routes/userRoutes.ts (`9e073fa`)
+- [x] 6. Delete old duplicate files (10 backend + 4 frontend) + repoint routes to shared middleware (`8444e86`)
+- [x] 7. Startup secrets guard — fail fast in production on default secrets (`9e073fa`)
 
 ## Post-Fix
-- [ ] Run tester agent — gather evidence (test output)
+- [ ] Run tester agent — gather evidence (test output) ← IN PROGRESS
 - [ ] Update evaluation.md with test results + evidence
 - [ ] Final commit + PR
 

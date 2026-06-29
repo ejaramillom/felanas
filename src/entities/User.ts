@@ -1,5 +1,5 @@
 import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn, Unique, Relation } from "typeorm";
-import { Company } from "./Company.js";
+import { Company } from "../contexts/identity/domain/Company.js";
 
 export enum UserRole {
     ADMIN = "ADMIN",

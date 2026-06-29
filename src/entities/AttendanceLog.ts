@@ -1,6 +1,6 @@
 import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, CreateDateColumn, JoinColumn, Relation } from "typeorm";
 import { Employee } from "./Employee.js";
-import { Company } from "./Company.js";
+import { Company } from "../contexts/identity/domain/Company.js";
 
 @Entity()
 export class AttendanceLog {

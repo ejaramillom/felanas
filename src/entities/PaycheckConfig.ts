@@ -1,5 +1,5 @@
 import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn, Relation } from "typeorm";
-import { Company } from "./Company.js";
+import { Company } from "../contexts/identity/domain/Company.js";
 
 @Entity()
 export class PaycheckConfig {

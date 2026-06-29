@@ -116,7 +116,7 @@ export class SchedulerService {
         }
 
         // Save all
-        return this.scheduleRepo.save(schedules);
+        return this.scheduleRepo.saveMany(schedules);
     }
 
     private createScheduleEntity(employee: Employee, date: string, shift: ShiftType, companyId: string): Schedule {
