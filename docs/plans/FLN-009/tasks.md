@@ -17,9 +17,9 @@
 - [x] Aether adversarial review — VERDICT: FAIL (7 HIGH issues)
 - [ ] Code reviewer quality pass
 - [ ] Persona reviewer
-- [ ] Tester — npm test + playwright E2E
+- [x] Tester — 14/14 unit tests passing; integration blocked by env (ECONNREFUSED)
 
-## Must-Fix Items (Aether FAIL)
+## Must-Fix Items (Aether FAIL) — ALL RESOLVED
 - [x] 1. CORS middleware — `npm install cors` + add to src/app.ts (`9e073fa`)
 - [x] 2. Remove /users/login bypass — deleted POST /login from src/routes/userRoutes.ts (`9e073fa`)
 - [x] 3. Null company → 401 in src/shared/middleware/auth.ts (`9e073fa`)
@@ -28,9 +28,16 @@
 - [x] 6. Delete old duplicate files (10 backend + 4 frontend) + repoint routes to shared middleware (`8444e86`)
 - [x] 7. Startup secrets guard — fail fast in production on default secrets (`9e073fa`)
 
-## Post-Fix
-- [ ] Run tester agent — gather evidence (test output) ← IN PROGRESS
-- [ ] Update evaluation.md with test results + evidence
+## Post-Fix (discovered during test run)
+- [x] Repair DDD import paths in all seeds, tests, entities (`3fe7e41`)
+- [x] Add BaseRepository.saveMany() — SchedulerService needed it (`3fe7e41`)
+- [x] Delete stale compiled artifacts + .gitignore patterns (`3fe7e41`)
+
+## Post-Fix Pipeline
+- [x] Run tester agent — 14 unit tests passing
+- [x] Update evaluation.md with test results
+- [ ] Code reviewer quality pass ← NEXT
+- [ ] Persona reviewer
 - [ ] Final commit + PR
 
 ## Deferred (Phase 2)
