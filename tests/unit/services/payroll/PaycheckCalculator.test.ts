@@ -1,7 +1,7 @@
-import { PaycheckCalculator } from "../../../../src/services/payroll/PaycheckCalculator";
-import { Employee } from "../../../../src/entities/Employee";
-import { PaycheckConfig } from "../../../../src/entities/PaycheckConfig";
-import { MathUtils } from "../../../../src/utils/MathUtils";
+import { PaycheckCalculator } from "@src/services/payroll/PaycheckCalculator";
+import { Employee } from "@src/entities/Employee";
+import { PaycheckConfig } from "@src/entities/PaycheckConfig";
+import { MathUtils } from "@src/utils/MathUtils";
 
 describe("PaycheckCalculator", () => {
     let calculator: PaycheckCalculator;

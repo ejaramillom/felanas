@@ -1,5 +1,5 @@
-import { AuthService } from "../../../../src/contexts/identity/application/AuthService.js";
-import { createMockUser } from "../../../../seeds/domain.seed.js";
+import { AuthService } from "@src/contexts/identity/application/AuthService.js";
+import { createMockUser } from "@seeds/domain.seed.js";
 import jwt from "jsonwebtoken";
 
 process.env.JWT_SECRET = "test_secret";

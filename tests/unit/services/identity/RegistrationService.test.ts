@@ -1,8 +1,8 @@
-import { RegistrationService } from "../../../../src/contexts/identity/application/RegistrationService.js";
-import { EncryptionUtils } from "../../../../src/shared/utils/EncryptionUtils.js";
-import { InvalidActivationKeyError } from "../../../../src/contexts/identity/domain/errors.js";
-import { createMockCompany, createMockUser, createMockActivationKey } from "../../../../seeds/domain.seed.js";
-import { UserRole } from "../../../../src/contexts/identity/domain/User.js";
+import { RegistrationService } from "@src/contexts/identity/application/RegistrationService.js";
+import { EncryptionUtils } from "@src/shared/utils/EncryptionUtils.js";
+import { InvalidActivationKeyError } from "@src/contexts/identity/domain/errors.js";
+import { createMockCompany, createMockUser, createMockActivationKey } from "@seeds/domain.seed.js";
+import { UserRole } from "@src/contexts/identity/domain/User.js";
 
 process.env.ACTIVATION_KEY_SECRET = "f3a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0";
 

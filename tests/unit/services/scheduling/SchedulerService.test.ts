@@ -1,8 +1,8 @@
-import { SchedulerService } from "../../../../src/services/scheduling/SchedulerService";
-import { ScheduleRepository } from "../../../../src/repositories/ScheduleRepository";
-import { EmployeeRepository } from "../../../../src/repositories/EmployeeRepository";
-import { Employee } from "../../../../src/entities/Employee";
-import { Schedule, ShiftType } from "../../../../src/entities/Schedule";
+import { SchedulerService } from "@src/services/scheduling/SchedulerService";
+import { ScheduleRepository } from "@src/repositories/ScheduleRepository";
+import { EmployeeRepository } from "@src/repositories/EmployeeRepository";
+import { Employee } from "@src/entities/Employee";
+import { Schedule, ShiftType } from "@src/entities/Schedule";
 
 // Mock Repositories
 const mockScheduleRepo = {
