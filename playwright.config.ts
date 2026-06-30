@@ -1,5 +1,7 @@
 import { defineConfig, devices } from '@playwright/test';
 
+const isDocker = !!process.env.BASE_URL;
+
 export default defineConfig({
   testDir: './tests/e2e',
   fullyParallel: false,
@@ -18,16 +20,19 @@ export default defineConfig({
       use: { ...devices['Desktop Chrome'] },
     },
   ],
-  webServer: [
-    {
-      command: 'cd frontend && npm run dev',
-      port: 5173,
-      reuseExistingServer: true,
-    },
-    {
-      command: 'npm run dev',
-      port: 3000,
-      reuseExistingServer: true,
-    },
-  ],
+  // Skip webServer when running against docker (BASE_URL is set)
+  ...(!isDocker && {
+    webServer: [
+      {
+        command: 'cd frontend && npm run dev',
+        port: 5173,
+        reuseExistingServer: true,
+      },
+      {
+        command: 'npm run dev',
+        port: 3000,
+        reuseExistingServer: true,
+      },
+    ],
+  }),
 });
