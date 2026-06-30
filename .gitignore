@@ -38,3 +38,9 @@ frontend/src/**/*.js
 frontend/src/**/*.js.map
 frontend/src/**/*.d.ts
 frontend/src/**/*.d.ts.map
+
+# Compiled Playwright test artifacts
+tests/e2e/*.js
+tests/e2e/*.js.map
+tests/e2e/*.d.ts
+tests/e2e/*.d.ts.map
