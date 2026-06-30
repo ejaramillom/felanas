@@ -1,4 +1,5 @@
 import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn, Unique, Relation } from "typeorm";
+import bcrypt from "bcryptjs";
 import { Company } from "./Company.js";
 
 export enum UserRole {
@@ -34,7 +35,6 @@ export class User {
     company!: Relation<Company>;
 
     async comparePassword(password: string): Promise<boolean> {
-        const bcrypt = await import('bcryptjs');
-        return bcrypt.default.compare(password, this.passwordHash);
+        return bcrypt.compare(password, this.passwordHash);
     }
 }
