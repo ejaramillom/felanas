@@ -31,6 +31,8 @@ services:
       DB_PASSWORD: ${DB_PASSWORD}
       DB_NAME: ${DB_NAME}
       JWT_SECRET: ${JWT_SECRET}
+      ACTIVATION_KEY_SECRET: ${ACTIVATION_KEY_SECRET}
+      ALLOWED_ORIGIN: http://localhost:8080
       PORT: ${PORT}
     ports:
       - "${PORT}:${PORT}"
