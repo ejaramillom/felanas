@@ -32,4 +32,11 @@ async function seed() {
     await AppDataSource.destroy();
 }
 
-seed().catch((e) => { console.error(e); process.exit(1); });
+(async () => {
+    try {
+        await seed();
+    } catch (e) {
+        console.error(e);
+        process.exit(1);
+    }
+})();
